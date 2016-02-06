@@ -1,0 +1,37 @@
+---
+title: "Tarea"
+author: "Daniela Jacinto"
+date: "5 de febrero de 2016"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+#Materias que he aprobado
+
+##Primer Semestre:
+###**Materia, Calificación**
+
+* Matemáticas Básicas, 6
+* Problemas de matemáticas básicas, 6
+* Conceptos de Cálculo, 6
+* DHPC, 9
+* Programación Actuarial 1, 6
+* Inglés 1, 10
+* Inglés 2, 10
+* Inglés 3, 10
+* Inglés 4, 10
+
+##Segundo Semestre
+###**Materia, Calificación**
+
+* Programación Actuarial 2, 6
+
+##Tercer Semestre
+###**Materia, Calificación**
+
+* Teoría del Interés 1, 10
+* Microeconomía, 10
+* Teoría de ecuaciones, 6
+* RACE, 10
+
