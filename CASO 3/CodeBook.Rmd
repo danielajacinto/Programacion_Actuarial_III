@@ -1,0 +1,94 @@
+---
+title: "CodeBook"
+author: "Daniela Jacinto"
+date: "28 de junio de 2016"
+output: html_document
+---
+#Programación Actuarial III
+##CASO 3: RECONOCIMIENTO DE ACTIVIDAD HUMANA CON CELULARES
+##LIBRO DE CÓDIGO
+
+###Descripción de la base de datos
+
+Se realizaron experimentos a un grupo de 30 personas, de entre 19 a 48 años, durante la realización de seis actividades: caminar, caminar escaleras arriba, caminar escaleras abajo, estar sentado, estar quieto y estar acostado; mientras utilizaban un teléfono Samsung Galaxy SII en la cintura.
+
+Se capturó la aceleración lineal 3-axial y la velocidad angular 3-axial, con un acelerómetro incorporado y un giroscopio, a una velocidad constante de 50 Hz. Los experimentos fueron grabados en video para etiquetar los datos de forma manual. El conjunto de datos obtenidos se ha dividido aleatoriamente en dos grupos: se seleccionó al 70% de los voluntarios para la generación de los datos de entrenamiento, y 30% para los datos de prueba.
+
+Las señales del sensor (acelerómetro y giroscopio) fueron pre-procesados mediante la aplicación de filtros de ruido y luego se muestrean en deslizamiento de ancho fijo ventanas de 2,56 seg y 50% de solapamiento. La señal de aceleración del sensor, que tiene componentes gravitacionales, y el movimiento del cuerpo se separó usando un filtro de paso bajo Butterworth en aceleración cuerpo y la gravedad. La fuerza de la gravedad se supone que tiene sólo componentes de baja frecuencia, por lo tanto, se utilizó un filtro con 0,3 Hz frecuencia de corte. A partir de cada ventana, un vector de características se obtuvo mediante el cálculo de las variables de tiempo y el dominio de la frecuencia.
+
+###Datos Originales
+
+Los datos originales se conforman por:
+
+<UL type=dysk>
+<LI>Un vector de 561 variables de tiempo y el dominio de la frecuencia.
+<LI>Sus etiquetas de actividades.
+<LI>Un identificador del voluntario que participó en el experimento.
+<LI>Las señales fueron utilizadas para estimar variables del vector, para cada patrón: 'XYZ' es utilizado para denotar señales de 3 ejes en direcciones X, Y y Z.
+</UL>
+En un listado tenemos las características:
+
+<UL type=dysk>
+<LI>tBodyAcc-XYZ
+<LI>tGravityAcc-XYZ
+<LI>tBodyAccJerk-XYZ
+<LI>tBodyGyro-XYZ
+<LI>tBodyGyroJerk-XYZ
+<LI>tBodyAccMag
+<LI>tGravityAccMag
+<LI>tBodyAccJerkMag
+<LI>tBodyGyroMag
+<LI>tBodyGyroJerkMag
+<LI>fBodyAcc-XYZ
+<LI>fBodyAccJerk-XYZ
+<LI>fBodyGyro-XYZ
+<LI>fBodyAccMag
+<LI>fBodyAccJerkMag
+<LI>fBodyGyroMag
+<LI>fBodyGyroJerkMag
+</UL>
+Las variables obtenidas a partir de estas señales son:
+<UL>
+<LI>mean(): Mean value
+<LI>std(): Standard deviation
+<LI>mad(): Median absolute deviation
+<LI>max(): Largest value in array
+<LI>min(): Smallest value in array
+<LI>sma(): Signal magnitude area
+<LI>energy(): Energy measure. Sum of the squares divided by the number of values.
+<LI>iqr(): Interquartile range
+<LI>entropy(): Signal entropy
+<LI>arCoeff(): Autorregresion coefficients with Burg order equal to 4
+<LI>correlation(): correlation coefficient between two signals
+<LI>maxInds(): index of the frequency component with largest magnitude
+<LI>meanFreq(): Weighted average of the frequency components to obtain a mean <LI>frequency
+<LI>skewness(): skewness of the frequency domain signal
+<LI>kurtosis(): kurtosis of the frequency domain signal
+<LI>bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+<LI>angle(): Angle between to vectors.
+</UL>
+Además, se obtuvieron datos extra, mediante las señales, en una muestra de ventana de señal y son utilizados en la variable angle():
+
+<UL type=disk>
+<LI>gravityMean
+<LI>tBodyAccMean
+<LI>tBodyAccJerkMean
+<LI>tBodyGyroMean
+<LI>tBodyGyroJerkMean
+</UL>
+
+###Transformaciones
+
+Las transformaciones aplicadas a la base de datos original fueron:
+
+<OL>
+<LI>Unir los dos archivos, de datos de test y training, para crear un solo conjunto.
+
+<LI>Extracción únicamente de las medidas de media y desviación estándar de cada medición, dejando únicamente 66 datos en el vector.
+
+<LI>Renombre de las actividades para describir de mejor manera la base de datos y asignar valores entre 1 y 30 para cada sujeto de prueba.
+
+<LI>Colocación de las etiquetas apropiadas en la base de datos con nombres de variables que las describan.
+
+<LI>Creación de la base de datos final, con el promedio de cada variable para cada actividad y cada sujeto de 180 filas por 68 columnas.
+</OL>
